@@ -10,13 +10,15 @@ type User {
     posts: [Post!]!
     likes: [Like!]!
     comments: [Comment!]!
+    rooms: [Room!]!
+    loginSecret: String
 }
 
 type Post {
     id: ID! @id
     location: String
     caption: String!
-    user: User!
+    user: User
     files: [File!]!
     likes: [Like!]!
     comments: [Comment!]!
@@ -24,19 +26,33 @@ type Post {
 
 type Like {
     id: ID! @id
-    user: User!
-    post: Post!
+    user: User
+    post: Post
 }
 
 type Comment {
     id: ID! @id
     text: String!
-    user: User!
-    post: Post!
+    user: User
+    post: Post
 }
 
 type File {
     id: ID! @id
     url: String!
-    post: Post!
+    post: Post
+}
+
+type Room {
+    id: ID! @id
+    participants: [User!]!
+    messages: [Message!]!
+}
+
+type Message {
+    id: ID! @id
+    text: String!
+    from: User! @relation(name: "From")
+    to: User! @relation(name: "To")
+    room: Room!
 }
