@@ -10,8 +10,11 @@ type User {
     isFollowing: Boolean!
     isSelf: Boolean!
     following: [User!]!
+    followingCount: Int!
     followers: [User!]!
+    followersCount: Int!
     posts: [Post!]!
+    postsCount: Int!
     likes: [Like!]!
     comments: [Comment!]!
     rooms: [Room!]!
