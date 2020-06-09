@@ -24,9 +24,7 @@ export default {
                 .postsConnection({ where: { user: { id } } })
                 .aggregate()
                 .count(),
-        fullName: (parent) => {
-            return `${parent.firstName} ${parent.lastName}`;
-        },
+        fullName: (parent) => `${parent.firstName} ${parent.lastName}`,
         isFollowing: (parent, _, { request }) => {
             const { user } = request;
             const { id: parentId } = parent;

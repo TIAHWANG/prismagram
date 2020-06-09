@@ -1,6 +1,6 @@
 type User {
     id: ID! @id
-    avatar: String
+    avatar: String @default(value:"https://img.pngio.com/user-logos-user-logo-png-1920_1280.png")
     username: String! @unique
     email: String! @unique
     firstName: String @default(value: "")
